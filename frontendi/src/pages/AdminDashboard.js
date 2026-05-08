@@ -73,24 +73,27 @@ const AdminDashboard = () => {
     } catch (err) { toast.error('Delete failed'); }
   };
 
-  const handleEditClick = (type, item) => {
-    setIsEditMode(true);
-    setCurrentId(item[`${type}_id`] || item.id);
-    setFormData({
-      name: item.name || '',
-      description: item.description || '',
-      image_url: item.image_url || '',
-      location: item.location || '',
-      price_per_day: item.price_per_day || '',
-      capacity: item.capacity || '',
-      category: item.category || '',
-      estimated_price: item.estimated_price || '',
-      price: item.price || '',
-      vendor_link: item.vendor_link || '',
-      theme_id: item.theme_id || '' // Added theme_id for editing
-    });
-    setIsModalOpen(true);
-  };
+const handleEditClick = (type, item) => {
+  setIsEditMode(true);
+  setCurrentId(item[`${type}_id`] || item.id);
+  setFormData({
+    name: item.name || '',
+    description: item.description || '',
+    
+    // FIX: Check both lowercase and uppercase keys
+    image_url: item.image_url || item.IMAGE_URL || '', 
+    
+    location: item.location || '',
+    price_per_day: item.price_per_day || '',
+    capacity: item.capacity || '',
+    category: item.category || '',
+    estimated_price: item.estimated_price || '',
+    price: item.price || '',
+    vendor_link: item.vendor_link || '',
+    theme_id: item.theme_id || ''
+  });
+  setIsModalOpen(true);
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
