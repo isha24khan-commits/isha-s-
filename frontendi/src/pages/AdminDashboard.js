@@ -220,8 +220,10 @@ const AdminDashboard = () => {
 
             {activeTab === 'venues' && venues.map(v => (
               <div key={v.venue_id} className="border-2 border-slate-100 rounded-3xl overflow-hidden hover:border-amber-200 transition-all bg-white flex flex-col shadow-sm">
-                <div className="h-48 bg-slate-100">{renderMedia(v.image_url, v.name)}</div>
-                <div className="p-6 flex flex-col h-full">
+<div className="h-48 bg-slate-100">
+  {/* This tells the code: "Use image_url, but if that's empty, try IMAGE_URL" */}
+  {renderMedia(v.image_url || v.IMAGE_URL, v.name)}
+</div>                <div className="p-6 flex flex-col h-full">
                   <h4 className="font-fredoka text-2xl mb-2">{v.name}</h4>
                   <p className="text-amber-600 text-sm font-bold flex items-center gap-1 mb-2"><MapPin size={14}/> {v.location}</p>
                   <p className="text-slate-600 text-sm mb-2">Capacity: {v.capacity} | ${v.price_per_day}/day</p>
