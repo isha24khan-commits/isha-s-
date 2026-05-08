@@ -196,63 +196,85 @@ const CheckoutPage = () => {
                 Payment Details
               </h2>
 
-              <div className="space-y-4 mb-6">
-                <div>
-                  <label className="block font-nunito text-sm font-semibold text-slate-700 mb-2">
-                    Cardholder Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Jane Smith"
-                    value={cardName}
-                    onChange={(e) => setCardName(e.target.value)}
-                    className="w-full px-4 py-3 bg-slate-50 rounded-2xl font-nunito text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
-                  />
-                </div>
+            
 
-                <div>
-                  <label className="block font-nunito text-sm font-semibold text-slate-700 mb-2">
-                    Card Number
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="1234 5678 9012 3456"
-                    value={cardNumber}
-                    onChange={(e) => setCardNumber(formatCardNumber(e.target.value))}
-                    maxLength={19}
-                    className="w-full px-4 py-3 bg-slate-50 rounded-2xl font-nunito text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
-                  />
-                </div>
+            <div className="space-y-4 mb-6">
+  <div>
+    <label className="block font-nunito text-sm font-semibold text-slate-700 mb-2">
+      Full Name
+    </label>
+    <input
+      type="text"
+      name="user_full_name" // Changed from cc-name
+      id="user_full_name"
+      autoComplete="off"     // Explicitly tell browser not to help
+      placeholder="Jane Smith"
+      value={cardName}
+      onChange={(e) => setCardName(e.target.value)}
+      className="w-full px-4 py-3 bg-slate-50 rounded-2xl font-nunito text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+    />
+  </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="block font-nunito text-sm font-semibold text-slate-700 mb-2">
-                      Expiry
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="MM/YY"
-                      value={expiry}
-                      onChange={(e) => setExpiry(formatExpiry(e.target.value))}
-                      maxLength={5}
-                      className="w-full px-4 py-3 bg-slate-50 rounded-2xl font-nunito text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-nunito text-sm font-semibold text-slate-700 mb-2">
-                      CVV
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="123"
-                      value={cvv}
-                      onChange={(e) => setCvv(e.target.value.replace(/\D/g, '').slice(0, 3))}
-                      maxLength={3}
-                      className="w-full px-4 py-3 bg-slate-50 rounded-2xl font-nunito text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
-                    />
-                  </div>
-                </div>
-              </div>
+  <div>
+    <label className="block font-nunito text-sm font-semibold text-slate-700 mb-2">
+      Payment Code
+    </label>
+    <input
+      type="text"
+      name="p_number"        // Changed from card-number
+      id="p_number"
+      autoComplete="off"
+      placeholder="1234 5678 9012 3456"
+      value={cardNumber}
+      onChange={(e) => setCardNumber(formatCardNumber(e.target.value))}
+      maxLength={19}
+      className="w-full px-4 py-3 bg-slate-50 rounded-2xl font-nunito text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+    />
+  </div>
+
+  <div className="grid grid-cols-2 gap-3">
+    <div>
+      <label className="block font-nunito text-sm font-semibold text-slate-700 mb-2">
+        Valid Thru
+      </label>
+      <input
+        type="text"
+        name="p_exp"          // Changed from cc-exp
+        id="p_exp"
+        autoComplete="off"
+        placeholder="MM/YY"
+        value={expiry}
+        onChange={(e) => setExpiry(formatExpiry(e.target.value))}
+        maxLength={5}
+        className="w-full px-4 py-3 bg-slate-50 rounded-2xl font-nunito text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+      />
+    </div>
+    <div>
+      <label className="block font-nunito text-sm font-semibold text-slate-700 mb-2">
+        Security Code
+      </label>
+      <input
+        type="text"
+        name="p_code"         // Changed from cc-csc
+        id="p_code"
+        autoComplete="off"
+        placeholder="123"
+        value={cvv}
+        onChange={(e) => setCvv(e.target.value.replace(/\D/g, '').slice(0, 3))}
+        maxLength={3}
+        className="w-full px-4 py-3 bg-slate-50 rounded-2xl font-nunito text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+      />
+    </div>
+  </div>
+</div>
+              
+
+
+
+
+
+
+
 
               <button
                 onClick={handlePayment}

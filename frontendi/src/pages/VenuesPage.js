@@ -63,7 +63,7 @@ const VenuesPage = () => {
             data-testid={`venue-card-${venue.venue_id}`}
             onClick={() => navigate(`/venues/${venue.venue_id}`)}
           >
-// Find this section in VenuesPage.js
+
 <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center overflow-hidden">
   {/* Check for BOTH uppercase and lowercase keys */}
   {(venue.IMAGE_URL || venue.image_url) ? (
