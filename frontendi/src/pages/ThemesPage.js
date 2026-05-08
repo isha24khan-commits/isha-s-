@@ -62,19 +62,27 @@ const ThemesPage = () => {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 auto-rows-[200px]">
-          {themes.map((theme, index) => (
-            <Link
-              key={theme.theme_id}
-              to={`/themes/${theme.theme_id}`}
-              className={`${getBentoSize(index)} relative overflow-hidden rounded-3xl group card-hover`}
-              data-testid={`theme-card-${theme.theme_id}`}
-            >
-              <img
-                src={theme.image_url}
-                alt={theme.name}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+{/* Optimized Bento Grid */}
+<div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 auto-rows-[200px] justify-center">
+  {themes.map((theme, index) => (
+    <Link
+      key={theme.theme_id}
+      to={`/themes/${theme.theme_id}`}
+      // ADDED: h-full to make sure cards fill their assigned row height
+      className={`${getBentoSize(index)} relative overflow-hidden rounded-3xl group card-hover h-full`}
+      data-testid={`theme-card-${theme.theme_id}`}
+    >
+      <img
+        src={theme.image_url || theme.IMAGE_URL} // Added uppercase check here too just in case!
+        alt={theme.name}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
+      {/* ... rest of your code */}
+
+
+
+
+
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
                 <h3 className="font-fredoka text-white text-lg md:text-xl lg:text-2xl">
