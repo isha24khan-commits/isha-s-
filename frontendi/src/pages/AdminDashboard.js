@@ -187,8 +187,10 @@ const handleEditClick = (type, item) => {
                     <div>
                       <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Order ID: #{order.order_id}</span>
                       <h3 className="font-fredoka text-xl text-slate-800">{order.customer_name}</h3>
-                      <p className="text-sm text-slate-500">{order.order_date ? new Date(order.order_date).toLocaleDateString() : 'N/A'}</p>
-                    </div>
+{/* Replace the current <p> with this one */}
+<p className="text-sm text-slate-500">
+  {order.order_date ? order.order_date.split('T')[0].split('-').slice(1).concat(order.order_date.split('T')[0].split('-')[0]).join('/') : 'N/A'}
+</p>                    </div>
                     <span className={`px-4 py-1 rounded-full text-xs font-bold uppercase ${order.status?.toLowerCase() === 'confirmed' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
                       {order.status || 'Pending'}
                     </span>
