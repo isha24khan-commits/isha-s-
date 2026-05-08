@@ -108,7 +108,6 @@ const ServicesPage = () => {
           </div>
         </div>
 
-// ... (keep imports and existing logic the same)
 
         {/* Services Grid */}
 {/* Services Grid */}
@@ -179,7 +178,7 @@ const ServicesPage = () => {
   ))}
 </div>
 
-// ... (keep the rest of the file the same)
+
 
         {filteredServices.length === 0 && (
           <div className="text-center py-12">
