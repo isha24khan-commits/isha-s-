@@ -108,9 +108,16 @@ const CheckoutPage = () => {
                   <Calendar size={20} className="text-purple-500" />
                   <div>
                     <p className="font-nunito text-xs text-slate-500">Date</p>
-                    <p className="font-nunito font-semibold text-slate-900 text-sm">
-                      {new Date(order.event_date).toLocaleDateString()}
-                    </p>
+                  
+
+
+
+                  <p className="font-nunito font-semibold text-slate-900 text-sm">
+  {order.event_date ? (() => {
+    const [year, month, day] = order.event_date.split('T')[0].split('-');
+    return `${month}/${day}/${year}`;
+  })() : 'Loading...'}
+</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 bg-green-50 rounded-2xl">
